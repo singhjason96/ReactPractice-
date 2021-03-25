@@ -1,11 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Header from "./Components/Header";
+import TextBox from "./Components/TextBox";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <TextBox />
     </div>
   );
 }
