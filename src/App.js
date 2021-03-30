@@ -14,7 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/header" component={Header} />
           <Route exact path="/section" component={Section} />
-          <Route exact path="/radiob" component={RadioB} />
+          <Route exact path="/radio" component={RadioB} />
 
         </Switch>
       </Router>
