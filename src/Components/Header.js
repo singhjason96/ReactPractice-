@@ -1,51 +1,61 @@
 import React, { useState } from "react";
 import "./Header.css";
-import { TextField, makeStyles } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1),
-      width: 200,
-      backgroundColor: "red",
-    },
-  },
-  textFieldStyle: {
-    color: "white",
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+    color: 'blue',
+
   },
 }));
 
-const Header = (props) => {
-  const classes = useStyles();
-  let history = useHistory();
+function ListItemLink(props) {
+  return <ListItem button component="a" {...props} />;
+}
 
-  function nextComponent() {
-    return history.push("/section");
-  }
+const Header = (props) => {
+  const [counter, setCounter] = useState(0);
+  console.log(counter);
+
+  const classes = useStyles();
+
   return (
     <>
-      <form className={classes.root} noValidate autoComplete="off">
-        <div>
-          <TextField
-            error
-            id="standard-error"
-            label="Error"
-            defaultValue="Hello World"
-            className={classes.textFieldStyle}
-          />
-          <TextField
-            error
-            id="standard-error-helper-text"
-            label="Error"
-            defaultValue="Hello World"
-            helperText="Incorrect entry."
-          />
-        </div>
-      </form>
-      <button onClick={nextComponent}>Go To Next Component</button>
+      <button onClick={() => setCounter(counter + 1)} className="headerStyle">
+        Add {props.name} 
+      </button>
+      {counter}
+
+      <div className={classes.root}>
+      <List component="nav" aria-label="main mailbox folders">
+        <ListItem button>
+          <ListItemText primary="Inbox" />
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="Drafts" />
+        </ListItem>
+      </List>
+      <Divider />
+      <List component="nav" aria-label="secondary mailbox folders">
+        <ListItem button>
+          <ListItemText primary="Trash" />
+        </ListItem>
+        <ListItemLink href="#simple-list">
+          <ListItemText primary="Spam" />
+        </ListItemLink>
+      </List>
+    </div>
     </>
   );
 };
+
+
 
 export default Header;
