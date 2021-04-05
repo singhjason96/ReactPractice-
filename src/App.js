@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Section from "./Components/Section";
 import AlertBox from "./Components/RadioB";
 import RadioB from "./Components/RadioB";
+import Form from "./Components/Form";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/header" component={Header} />
           <Route exact path="/section" component={Section} />
           <Route exact path="/radio" component={RadioB} />
+          <Route exact path="/form" component={Form}/>
 
         </Switch>
       </Router>
